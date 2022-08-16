@@ -30,11 +30,15 @@ body {
     width: 30vmin;
     height: 30vmin;
     position: relative;
+    display: table-cell;
+    box-sizing: border-box;
+    cursor: pointer;
+    padding: 10px;
 }
 
 .cell {
-    width: 30vmin;
-    height: 30vmin;
+    width: 30%;
+    height: 30%;
     position: relative;
     display: table-cell;
     box-sizing: border-box;
