@@ -1,44 +1,33 @@
 body {
-    background-color: black;
-    color: aliceblue;
+    background-color: white;
+    color: gray;
 }
-
-.game {
-    position: absolute;
+.board {
+    position: relative;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    width: 90vmin;
-    height: 90;
-    margin: auto;
-}
-
-.board {
-    display: table;
-    border-collapse: collapse;
-}
-
-.row {
-    display: table-row;
-    overflow: hidden;
-    height: 30vmin;
-}
-
-.region {
-    display: table;
     width: 30vmin;
     height: 30vmin;
-    position: relative;
-    display: table-cell;
-    box-sizing: border-box;
-    cursor: pointer;
-    padding: 10px;
+    margin: 2px;
+    display: table;
+	padding: calc(4px + 0.5vw);
+	transition: border 0.5s;
+	border-radius: 8px;
+}
+
+.board.enabled {
+	border: 2px solid slategray;
+}
+
+.board.disabled {
+	border: 2px solid transparent;
 }
 
 .cell {
-    width: 30%;
-    height: 30%;
+    width: calc(14px + 2.5vw);
+    height: calc(14px + 2.5vw);
     position: relative;
     display: table-cell;
     box-sizing: border-box;
@@ -46,19 +35,19 @@ body {
 }
 
 .N {
-    border-bottom: 5px solid white;
+    border-bottom: 2px solid aliceblue;
 }
 
 .S {
-    border-top: 5px solid white;
+    border-top: 2px solid aliceblue;
 }
 
 .W {
-    border-right: 5px solid white;
+    border-right: 2px solid aliceblue;
 }
 
 .E {
-    border-left: 5px solid white;
+    border-left: 2px solid aliceblue;
 }
 
 
