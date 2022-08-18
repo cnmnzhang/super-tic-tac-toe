@@ -10,6 +10,10 @@ $(document).ready(function () {
         "This game has ended. Refresh the page for a new game!"
       );
 
+    if ($(this).closest(".live").length === 0) {
+      return;
+    }
+
     // get objects
     game = $(this).closest(".game");
     minigame = $(this).closest(".minigame");
@@ -27,7 +31,12 @@ $(document).ready(function () {
     markers = $(".minigame").filter("." + player)
     console.log(markers.length)
     updateGameStatus(markers, player);
-    switchPlayer()
+    $(".live").removeClass("live");
+    if ($(".minigame.col-" + col + ".row-" + row).not('.filled').length == 0) {
+      $(".game").addClass("live");
+    } else {
+      $(".minigame.col-" + col + ".row-" + row).addClass("live");
+    }
   })
 });
 
@@ -52,6 +61,7 @@ function updateMiniGameStatus(markers, player) {
     minigame.addClass(".disabled");
     minigame.unbind("click");
   }
+  switchPlayer();
 };
 
 function updateGameStatus(markers, player) {
