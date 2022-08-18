@@ -2,27 +2,33 @@ body {
     background-color: white;
     color: gray;
 }
-.board {
+
+.game.live,
+.minigame.live {
+    border: 2px solid yellow;
+    opacity: 50%;
+	border-radius: 8px;
+}
+
+.game {
+    background-color: aliceblue;
+    opacity: 50%;
+
+}
+.minigame {
     position: relative;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    width: 30vmin;
-    height: 30vmin;
+    width: auto;
+    height: auto;
     margin: 2px;
     display: table;
 	padding: calc(4px + 0.5vw);
 	transition: border 0.5s;
-	border-radius: 8px;
-}
-
-.board.enabled {
 	border: 2px solid slategray;
-}
-
-.board.disabled {
-	border: 2px solid transparent;
+	border-radius: 8px;
 }
 
 .cell {
@@ -57,19 +63,19 @@ body {
 }
 
 .N {
-    border-bottom: 2px solid aliceblue;
+    border-bottom: 2px solid slategray;
 }
 
 .S {
-    border-top: 2px solid aliceblue;
+    border-top: 2px solid slategray;
 }
 
 .W {
-    border-right: 2px solid aliceblue;
+    border-right: 2px solid slategray;
 }
 
 .E {
-    border-left: 2px solid aliceblue;
+    border-left: 2px solid slategray;
 }
 
 

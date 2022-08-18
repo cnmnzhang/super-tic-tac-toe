@@ -3,7 +3,7 @@ $(document).ready(function () {
   player = "x";
 
   // click listener
-  $(".board").find("td:not(.disabled)").click(function () {
+  $(".minigame").find("td:not(.disabled)").click(function () {
     
     if (gameIsOver)
       return window.alert(
@@ -11,7 +11,7 @@ $(document).ready(function () {
       );
 
     // get objects
-    board = $(this).closest(".board");
+    minigame = $(this).closest(".minigame");
     col = $(this).attr("class").split(' ').pop();
     row = $(this).closest("tr").attr("class");
 
@@ -20,11 +20,9 @@ $(document).ready(function () {
     $(this).html(div);
     $(this).addClass("disabled");
     $(this).unbind("click");
-    markers = board.find(".marker").filter("." + player)
+    markers = minigame.find(".marker").filter("." + player)
     updateGameStatus(markers, player);
   })
-
-
 });
 
 // --- Helper Methods ---
@@ -38,11 +36,11 @@ function updateGameStatus(markers, player) {
   if (checkRows(markers) || checkColumns(markers) || checkDiagonals(markers)) {
     bgcolor = player === "x" ? "green" : "yellow";
     window.alert(player + " won!");
-    board.addClass(bgcolor);
+    minigame.addClass(bgcolor);
     gameIsOver = true;
-  } else if ($(".board").find("td:not(.disabled)").length === 0) {
+  } else if ($(".minigame").find("td:not(.disabled)").length === 0) {
     window.alert(`It's a draw!`);
-    board.addClass("blue");
+    minigame.addClass("blue");
     gameIsOver = true;
 
   } else {
