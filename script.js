@@ -20,6 +20,14 @@ $(document).ready(function () {
     col = $(this).attr("class").split(' ').pop();
     row = $(this).closest("tr").attr("class");
 
+    
+    $(".live").removeClass("live");
+    if ($(".minigame.col-" + col + ".row-" + row).hasClass("disabled")) {
+      $(".game").addClass("live");
+    } else {
+      $(".minigame.col-" + col + ".row-" + row).addClass("live");
+    }
+
     // update the board
     var div = $("<div>").addClass("marker").addClass(player).addClass('col-' + col).addClass('row-' + row);
     $(this).html(div);
@@ -31,12 +39,6 @@ $(document).ready(function () {
     markers = $(".minigame").filter("." + player)
     console.log(markers.length)
     updateGameStatus(markers, player);
-    $(".live").removeClass("live");
-    if ($(".minigame.col-" + col + ".row-" + row).not('.filled').length == 0) {
-      $(".game").addClass("live");
-    } else {
-      $(".minigame.col-" + col + ".row-" + row).addClass("live");
-    }
   })
 });
 
@@ -52,13 +54,13 @@ function updateMiniGameStatus(markers, player) {
     bgcolor = player === "x" ? "green" : "yellow";
     window.alert(player + " won!");
     minigame.addClass(bgcolor);
-    minigame.addClass(".disabled");
+    minigame.addClass("disabled");
     minigame.unbind("click");
 
   } else if ($(".minigame").find("td:not(.disabled)").length === 0) {
     window.alert(`It's a draw!`);
     minigame.addClass("blue");
-    minigame.addClass(".disabled");
+    minigame.addClass("disabled");
     minigame.unbind("click");
   }
   switchPlayer();

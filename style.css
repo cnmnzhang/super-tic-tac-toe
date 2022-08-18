@@ -6,7 +6,6 @@ body {
 .game.live,
 .minigame.live {
     border: 2px solid yellow;
-    opacity: 50%;
 	border-radius: 8px;
 }
 
