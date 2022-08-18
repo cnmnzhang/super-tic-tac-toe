@@ -11,6 +11,7 @@ $(document).ready(function () {
       );
 
     // get objects
+    game = $(this).closest(".game");
     minigame = $(this).closest(".minigame");
     col = $(this).attr("class").split(' ').pop();
     row = $(this).closest("tr").attr("class");
@@ -21,7 +22,12 @@ $(document).ready(function () {
     $(this).addClass("disabled");
     $(this).unbind("click");
     markers = minigame.find(".marker").filter("." + player)
+    updateMiniGameStatus(markers, player);
+
+    markers = $(".minigame").filter("." + player)
+    console.log(markers.length)
     updateGameStatus(markers, player);
+    switchPlayer()
   })
 });
 
@@ -31,20 +37,32 @@ $(document).ready(function () {
 //  or the game ended in a draw!
 // Side effect: displays an alert with a message as to
 //  who won the game or that the game ended in a draw!
-function updateGameStatus(markers, player) {
+function updateMiniGameStatus(markers, player) {
   console.log("!");
   if (checkRows(markers) || checkColumns(markers) || checkDiagonals(markers)) {
     bgcolor = player === "x" ? "green" : "yellow";
     window.alert(player + " won!");
     minigame.addClass(bgcolor);
-    gameIsOver = true;
+    minigame.addClass(".disabled");
+    minigame.unbind("click");
+
   } else if ($(".minigame").find("td:not(.disabled)").length === 0) {
     window.alert(`It's a draw!`);
     minigame.addClass("blue");
+    minigame.addClass(".disabled");
+    minigame.unbind("click");
+  }
+};
+
+function updateGameStatus(markers, player) {
+  console.log("!");
+  if (checkRows(markers) || checkColumns(markers) || checkDiagonals(markers)) {
+    window.alert(player + " won!");
+    gameIsOver = true;
+  } else if ($(".game").find("td:not(.disabled)").length === 0) {
+    window.alert(`It's a draw!`);
     gameIsOver = true;
 
-  } else {
-    switchPlayer()
   }
 };
 
