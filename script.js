@@ -1,10 +1,12 @@
 $(document).ready(function () {
+  let gameIsOver = false;
+  player = "x";
+
   // click listener
-  $(".board").find("td:not(disabled)").click(function () {
+  $(".board").find("td:not(.disabled)").click(function () {
     
-    let gameIsOver = false;
-    player = "x";
-console.log("cloick")
+    
+
     if (gameIsOver)
       return window.alert(
         "This game has ended. Refresh the page for a new game!"
@@ -19,7 +21,7 @@ console.log("cloick")
     var div = $("<div>").addClass("marker").addClass(player).addClass('col-' + col).addClass('row-' + row);
     $(this).html(div);
     $(this).addClass("disabled");
-    $(this).unbind("click")
+    $(this).unbind("click");
     markers = board.find(".marker").filter("." + player)
     updateGameStatus(markers, player);
   })
@@ -34,10 +36,11 @@ console.log("cloick")
 // Side effect: displays an alert with a message as to
 //  who won the game or that the game ended in a draw!
 function updateGameStatus(markers, player) {
+  console.log("!")
   if (checkRows(markers) || checkColumns(markers) || checkDiagonals(markers)) {
     window.alert(player + " won!");
     gameIsOver = true;
-  } else if ($(".board").find("td:not(disabled)").length === 0) {
+  } else if ($(".board").find("td:not(.disabled)").length === 0) {
     window.alert(`It's a draw!`);
     gameIsOver = true;
 

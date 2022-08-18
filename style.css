@@ -34,6 +34,10 @@ body {
     cursor: pointer;
 }
 
+.disabled {
+    cursor: cursor;
+}
+
 .N {
     border-bottom: 2px solid aliceblue;
 }
