@@ -38,6 +38,24 @@ body {
     cursor: cursor;
 }
 
+.green {
+    background-color: #96d89f;
+    opacity: 50%;
+    color: #010021;
+}
+
+.yellow {
+    background-color: #e2e1a1;
+    opacity: 50%;
+    color: #260000;
+}
+
+.blue {
+    background-color: #a8cae6;
+    opacity: 50%;
+    color: #010021;
+}
+
 .N {
     border-bottom: 2px solid aliceblue;
 }

@@ -5,8 +5,6 @@ $(document).ready(function () {
   // click listener
   $(".board").find("td:not(.disabled)").click(function () {
     
-    
-
     if (gameIsOver)
       return window.alert(
         "This game has ended. Refresh the page for a new game!"
@@ -38,17 +36,18 @@ $(document).ready(function () {
 function updateGameStatus(markers, player) {
   console.log("!")
   if (checkRows(markers) || checkColumns(markers) || checkDiagonals(markers)) {
+    bgcolor = player === "x" ? "green" : "yellow";
     window.alert(player + " won!");
+    board.addClass(bgcolor)
     gameIsOver = true;
   } else if ($(".board").find("td:not(.disabled)").length === 0) {
     window.alert(`It's a draw!`);
+    board.addClass("blue")
     gameIsOver = true;
 
   } else {
     switchPlayer()
   }
-
-
 };
 
 // Switches the player value from 0 to 1 and vice versa
