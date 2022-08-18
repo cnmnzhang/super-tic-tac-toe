@@ -12,7 +12,7 @@ $(document).ready(function () {
 
     // get objects
     board = $(this).closest(".board");
-    col = $(this).attr("class")[-1];
+    col = $(this).attr("class").split(' ').pop();
     row = $(this).closest("tr").attr("class");
 
     // update the board
@@ -34,15 +34,15 @@ $(document).ready(function () {
 // Side effect: displays an alert with a message as to
 //  who won the game or that the game ended in a draw!
 function updateGameStatus(markers, player) {
-  console.log("!")
+  console.log("!");
   if (checkRows(markers) || checkColumns(markers) || checkDiagonals(markers)) {
     bgcolor = player === "x" ? "green" : "yellow";
     window.alert(player + " won!");
-    board.addClass(bgcolor)
+    board.addClass(bgcolor);
     gameIsOver = true;
   } else if ($(".board").find("td:not(.disabled)").length === 0) {
     window.alert(`It's a draw!`);
-    board.addClass("blue")
+    board.addClass("blue");
     gameIsOver = true;
 
   } else {
