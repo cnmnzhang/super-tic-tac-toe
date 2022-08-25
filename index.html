@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body >
 
     <div class="container">
         <div class="page-header">
@@ -28,8 +28,13 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-    <div class="row">
-        <div class="col-md-8">
+    <div class="container">
+
+        <div id="turn" class="well well-sm border border-md green">
+            Turn: Player X
+        </div>
+        <div class="row gx-5">
+        <div class="col-md-6">
             <table class="game live">
                 <tr class="1">
                     <td class="1">
@@ -212,13 +217,18 @@
             </table>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-3">
 
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Game Options
+                    Game Play Settings
                 </div>
                 <div class="panel-body">
+                    <ul>
+                        <button type="button" class="btn btn-xs">
+                            highlight
+                        </button>
+                    </ul>
                     
                 </div>
 
@@ -226,6 +236,8 @@
         </div>
 
     </div>
+    </div>
+    
 
 
 </body>

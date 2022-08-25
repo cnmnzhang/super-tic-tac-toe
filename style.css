@@ -1,6 +1,21 @@
 body {
     background-color: white;
     color: gray;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+container {
+
+}
+
+panel {
+    margin: 2px;
+}
+
+.col-md-4 {
+    width: 50%;
 }
 
 .game.live,
@@ -11,8 +26,7 @@ body {
 
 .game {
     background-color: aliceblue;
-    width: 50%
-
+    width: 
 }
 .minigame {
     position: relative;

@@ -1,6 +1,5 @@
 $(document).ready(function () {
   let gameIsOver = false;
-  player = "x";
 
   // click listener
   $(".minigame").find("td:not(.disabled)").click(function () {
@@ -13,6 +12,8 @@ $(document).ready(function () {
     if ($(this).closest(".live").length === 0) {
       return;
     }
+
+    var player = $("#turn").hasClass("green")? "x": "o";
 
     // get objects
     game = $(this).closest(".game");
@@ -37,7 +38,6 @@ $(document).ready(function () {
     updateMiniGameStatus(markers, player);
 
     markers = $(".minigame").filter("." + player)
-    console.log(markers.length)
     updateGameStatus(markers, player);
   })
 });
@@ -49,38 +49,38 @@ $(document).ready(function () {
 // Side effect: displays an alert with a message as to
 //  who won the game or that the game ended in a draw!
 function updateMiniGameStatus(markers, player) {
-  console.log("!");
   if (checkRows(markers) || checkColumns(markers) || checkDiagonals(markers)) {
     bgcolor = player === "x" ? "green" : "yellow";
-    window.alert(player + " won!");
     minigame.addClass(bgcolor);
     minigame.addClass("disabled");
     minigame.unbind("click");
+    switchPlayer(player, "Player <strong>" + player + "</strong> won a mini tic tac toe game! ");
 
   } else if ($(".minigame").find("td:not(.disabled)").length === 0) {
-    window.alert(`It's a draw!`);
     minigame.addClass("blue");
     minigame.addClass("disabled");
     minigame.unbind("click");
+    switchPlayer(player, "Mini tic tac toe ended in a draw! Boring! ");
+  } else {
+    switchPlayer(player, "");
   }
-  switchPlayer();
+  console.log(player);
 };
 
 function updateGameStatus(markers, player) {
-  console.log("!");
   if (checkRows(markers) || checkColumns(markers) || checkDiagonals(markers)) {
     window.alert(player + " won!");
     gameIsOver = true;
   } else if ($(".game").find("td:not(.disabled)").length === 0) {
     window.alert(`It's a draw!`);
     gameIsOver = true;
-
   }
 };
 
 // Switches the player value from 0 to 1 and vice versa
-function switchPlayer() {
-  player = player === "x" ? "o" : "x";
+function switchPlayer(player, alert) {
+  $("#turn").removeClass((player === "x") ? "green" : "yellow").addClass((player === "x") ? "yellow" : "green");
+  $("#turn").html(alert+ ((player === "x") ? "Player <strong>o</strong>" : "Player <strong>x</strong>") + " turn!");
 };
 
 // Returns true if all cells in a row
